@@ -5,6 +5,7 @@
  */
 package Facade;
 
+import Entites.Arbitre;
 import Entites.FauteComise;
 import Entites.HistoriqueJEquipe;
 import Entites.Joueur;
@@ -13,6 +14,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -43,6 +45,23 @@ public class JoueurFacade extends AbstractFacade<Joueur> implements JoueurFacade
         j.setDateInterdiction(dateI);
         em.persist(j);
     }
+
+    @Override
+    public void supprimerJoueur(Joueur j) {
+        em.remove(j);
+    }
+
+    @Override
+    public Joueur rechercheJoueur(String n, String p) {
+        Query requete = em.createQuery("SELECT j from Joueur as j where j.nom=:nom and j.prenom=:pre");
+        requete.setParameter("nom", n);
+        requete.setParameter("pre", p);       
+        List<Joueur> liste =  requete.getResultList();
+        if (!liste.isEmpty())
+            return liste.get(0);
+        else return null;
+    }
+    
     
     
     

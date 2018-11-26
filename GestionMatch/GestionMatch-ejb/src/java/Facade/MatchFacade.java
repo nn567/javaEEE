@@ -7,12 +7,14 @@ package Facade;
 
 import Entites.Arbitre;
 import Entites.FauteComise;
+import Entites.Joueur;
 import Entites.Match;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -42,6 +44,11 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
         m.setButsEquipe2(butE2);
         m.setFauteComises(liste);
         em.persist(m);
+    }
+
+    @Override
+    public void modifierMatch(Date date, String eq1, String eq2) {
+       
     }
     
     

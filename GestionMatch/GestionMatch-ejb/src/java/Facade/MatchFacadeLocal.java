@@ -34,5 +34,7 @@ public interface MatchFacadeLocal {
     int count();
 
     void creerMatch(Date date, int butE1, int butE2, Arbitre a, List<FauteComise> liste);
+
+    void modifierMatch(Date date, String eq1, String eq2);
     
 }

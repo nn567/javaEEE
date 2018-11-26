@@ -34,5 +34,9 @@ public interface JoueurFacadeLocal {
     int count();
 
     void creerJoueur(String nom, String prenom, List<FauteComise> listeF,  List<HistoriqueJEquipe> histoE,Date dateI);
+
+    void supprimerJoueur(Joueur j);
+
+    Joueur rechercheJoueur(String n, String p);
     
 }

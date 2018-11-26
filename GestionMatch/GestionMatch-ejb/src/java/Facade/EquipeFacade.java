@@ -44,4 +44,5 @@ public class EquipeFacade extends AbstractFacade<Equipe> implements EquipeFacade
     
     
     
+    
 }
