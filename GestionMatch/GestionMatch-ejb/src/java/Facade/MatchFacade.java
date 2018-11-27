@@ -36,13 +36,15 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
     }
 
     @Override
-    public void creerMatch(Date date, int butE1, int butE2, Arbitre a, List<FauteComise> liste) {
+    public void creerMatch(Date date, int butE1, int butE2, Arbitre a, List<FauteComise> liste, List<Joueur> compoE1, List<Joueur> compoE2 ) {
         Match m = new Match();
         m.setDate(date);
         m.setArbitre(a);
         m.setButsEquipe(butE2);
         m.setButsEquipe2(butE2);
         m.setFauteComises(liste);
+        m.setCompoE1(compoE1);
+        m.setCompoE2(compoE2);
         em.persist(m);
     }
 
