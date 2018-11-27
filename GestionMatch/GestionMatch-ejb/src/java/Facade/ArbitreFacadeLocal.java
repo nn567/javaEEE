@@ -34,5 +34,7 @@ public interface ArbitreFacadeLocal {
     void creerArbitre(String nom, String prenom, String login, String mdp, List<Match> listeM);
 
     Arbitre authen(String log, String mdp);
+
+    Arbitre rechercheArbitre(String n, String p);
     
 }

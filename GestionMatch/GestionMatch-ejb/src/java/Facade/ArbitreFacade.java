@@ -6,6 +6,7 @@
 package Facade;
 
 import Entites.Arbitre;
+import Entites.Joueur;
 import Entites.Match;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -48,6 +49,17 @@ public class ArbitreFacade extends AbstractFacade<Arbitre> implements ArbitreFac
         Query requete = em.createQuery("SELECT a from Arbitre as a where a.login=:lo and a.mdp=:m");
         requete.setParameter("lo", log);
         requete.setParameter("m", mdp);       
+        List<Arbitre> liste =  requete.getResultList();
+        if (!liste.isEmpty())
+            return liste.get(0);
+        else return null;
+    }
+
+    @Override
+    public Arbitre rechercheArbitre(String n, String p) {
+        Query requete = em.createQuery("SELECT j from Joueur as j where j.nom=:nom and j.prenom=:pre");
+        requete.setParameter("nom", n);
+        requete.setParameter("pre", p);       
         List<Arbitre> liste =  requete.getResultList();
         if (!liste.isEmpty())
             return liste.get(0);

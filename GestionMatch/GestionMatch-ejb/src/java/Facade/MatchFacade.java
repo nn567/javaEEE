@@ -50,7 +50,7 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
 
     @Override
     public void modifierMatch(Date date, String eq1, String eq2) {
-       
+      Match m = new Match();  
     }
     
     
