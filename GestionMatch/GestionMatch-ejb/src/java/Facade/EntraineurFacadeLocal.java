@@ -34,5 +34,7 @@ public interface EntraineurFacadeLocal {
     void creerEntraineur(String nom, String prenom, String login, String mdp, List<HistoriqueEEquipe>  histoEE);
 
     Entraineur authen(String log, String mdp);
+
+    Entraineur rechercheEntraineur(String n, String p);
     
 }

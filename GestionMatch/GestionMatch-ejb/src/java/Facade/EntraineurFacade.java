@@ -54,6 +54,17 @@ public class EntraineurFacade extends AbstractFacade<Entraineur> implements Entr
             return liste.get(0);
         else return null;
     }
+
+    @Override
+    public Entraineur rechercheEntraineur(String n, String p) {
+         Query requete = em.createQuery("SELECT j from Entraineur as j where j.nom=:nom and j.prenom=:pre");
+        requete.setParameter("nom", n);
+        requete.setParameter("pre", p);       
+        List<Entraineur> liste =  requete.getResultList();
+        if (!liste.isEmpty())
+            return liste.get(0);
+        else return null;
+    }
     
     
     

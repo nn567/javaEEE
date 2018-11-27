@@ -18,6 +18,8 @@ public interface gestionFederationLocal {
 
     void creerArbitre(String n, String p, String l, String m);
 
+    void affecterEE(String n, String p, String nomE);
+
 
     
 }

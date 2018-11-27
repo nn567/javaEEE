@@ -5,6 +5,7 @@
  */
 package Facade;
 
+import Entites.Entraineur;
 import Entites.Equipe;
 import Entites.HistoriqueEEquipe;
 import Entites.HistoriqueJEquipe;
@@ -12,6 +13,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -40,6 +42,16 @@ public class EquipeFacade extends AbstractFacade<Equipe> implements EquipeFacade
         e.setHistoriqueJE(histoJE);
         e.setHistoriqueEEquipes(histoEE);
         em.persist(e);
+    }
+
+    @Override
+    public Equipe rechercheEquipe(String n) {
+       Query requete = em.createQuery("SELECT j from Equipe as j where j.nomE=:n");
+        requete.setParameter("nom", n);      
+        List<Equipe> liste =  requete.getResultList();
+        if (!liste.isEmpty())
+            return liste.get(0);
+        else return null; 
     }
     
     

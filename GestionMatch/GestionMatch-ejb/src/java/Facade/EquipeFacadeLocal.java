@@ -33,5 +33,7 @@ public interface EquipeFacadeLocal {
     int count();
 
     void creerEquipe(String nomE, List<HistoriqueJEquipe> histpJE, int points, List<HistoriqueEEquipe> histoEE);
+
+    Equipe rechercheEquipe(String n);
     
 }
