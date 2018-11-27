@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -21,6 +22,29 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Joueur extends Personne implements Serializable {
+
+    @ManyToMany(mappedBy = "compoE2")
+    private List<Match> matchs1;
+
+    public List<Match> getMatchs1() {
+        return matchs1;
+    }
+
+    public void setMatchs1(List<Match> matchs1) {
+        this.matchs1 = matchs1;
+    }
+
+    public List<Match> getMatchs() {
+        return matchs;
+    }
+
+    public void setMatchs(List<Match> matchs) {
+        this.matchs = matchs;
+    }
+    
+
+    @ManyToMany(mappedBy = "compoE1")
+    private List<Match> matchs;
 
     private Date dateInterdiction;
 
