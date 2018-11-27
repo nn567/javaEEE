@@ -45,8 +45,8 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
         m.setButsEquipe(butE2);
         m.setButsEquipe2(butE2);
         m.setFauteComises(new ArrayList<FauteComise>());
-        m.setCompoE1( new ArrayList<Joueur>());
-        m.setCompoE2(new ArrayList<Joueur>());
+        m.setCompo1( new ArrayList<Joueur>());
+        m.setCompo2(new ArrayList<Joueur>());
         em.persist(m);
     }
 

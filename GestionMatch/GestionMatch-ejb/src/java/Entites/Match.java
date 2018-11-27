@@ -69,49 +69,52 @@ public class Match implements Serializable {
     }
 
     
+    @ManyToMany(mappedBy = "matchs")
+    private List<Joueur> compo2;
+
+    /**
+     * Get the value of compo2
+     *
+     * @return the value of compo2
+     */
+    public List<Joueur> getCompo2() {
+        return compo2;
+    }
+
+    /**
+     * Set the value of compo2
+     *
+     * @param compo2 new value of compo2
+     */
+    public void setCompo2(List<Joueur> compo2) {
+        this.compo2 = compo2;
+    }
+
     
-    @ManyToMany
-    private List<Joueur> compoE2;
+  
+    @ManyToMany(mappedBy = "matchs1")
+    private List<Joueur> compo1;
 
     /**
-     * Get the value of compoE2
+     * Get the value of compo1
      *
-     * @return the value of compoE2
+     * @return the value of compo1
      */
-    public List<Joueur> getCompoE2() {
-        return compoE2;
+    public List<Joueur> getCompo1() {
+        return compo1;
     }
 
     /**
-     * Set the value of compoE2
+     * Set the value of compo1
      *
-     * @param compoE2 new value of compoE2
+     * @param compo1 new value of compo1
      */
-    public void setCompoE2(List<Joueur> compoE2) {
-        this.compoE2 = compoE2;
+    public void setCompo1(List<Joueur> compo1) {
+        this.compo1 = compo1;
     }
 
     
-    @ManyToMany
-    private List<Joueur> compoE1;
 
-    /**
-     * Get the value of compoE1
-     *
-     * @return the value of compoE1
-     */
-    public List<Joueur> getCompoE1() {
-        return compoE1;
-    }
-
-    /**
-     * Set the value of compoE1
-     *
-     * @param compoE1 new value of compoE1
-     */
-    public void setCompoE1(List<Joueur> compoE1) {
-        this.compoE1 = compoE1;
-    }
 
     @ManyToOne
     private Arbitre arbitre;
