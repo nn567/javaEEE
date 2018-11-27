@@ -31,10 +31,16 @@ public interface ArbitreFacadeLocal {
 
     int count();
 
-    void creerArbitre(String nom, String prenom, String login, String mdp, List<Match> listeM);
+    void creerArbitre(String nom, String prenom, String login, String mdp);
 
     Arbitre authen(String log, String mdp);
 
     Arbitre rechercheArbitre(String n, String p);
+
+    List<Arbitre> recupArbitres();
+
+    Arbitre rechercheArbitreId(long id);
+
+
     
 }

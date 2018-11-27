@@ -34,5 +34,7 @@ public interface FauteComiseFacadeLocal {
     int count();
 
     void creerFaute(Faute type, Joueur joueur, Match match);
+
+    List<FauteComise> recupFautesMatch(Match m);
     
 }

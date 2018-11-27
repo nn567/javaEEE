@@ -8,6 +8,7 @@ package Facade;
 import Entites.Arbitre;
 import Entites.Joueur;
 import Entites.Match;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -34,13 +35,13 @@ public class ArbitreFacade extends AbstractFacade<Arbitre> implements ArbitreFac
     }
 
     @Override
-    public void creerArbitre(String nom, String prenom, String login, String mdp, List<Match> listeM) {
+    public void creerArbitre(String nom, String prenom, String login, String mdp) {
         Arbitre a = new Arbitre();
         a.setNom(nom);
         a.setPrenom(prenom);
         a.setLogin(login);
         a.setMdp(mdp);
-        a.setMatchs(listeM);
+        a.setMatchs(new ArrayList<Match>());
         em.persist(a);
     }
 
@@ -57,7 +58,7 @@ public class ArbitreFacade extends AbstractFacade<Arbitre> implements ArbitreFac
 
     @Override
     public Arbitre rechercheArbitre(String n, String p) {
-        Query requete = em.createQuery("SELECT j from Joueur as j where j.nom=:nom and j.prenom=:pre");
+        Query requete = em.createQuery("SELECT j from Arbitre as j where j.nom=:nom and j.prenom=:pre");
         requete.setParameter("nom", n);
         requete.setParameter("pre", p);       
         List<Arbitre> liste =  requete.getResultList();
@@ -65,6 +66,28 @@ public class ArbitreFacade extends AbstractFacade<Arbitre> implements ArbitreFac
             return liste.get(0);
         else return null;
     }
+
+    @Override
+    public List<Arbitre> recupArbitres() {
+        Query requete = em.createQuery("SELECT j from Arbitre as j");     
+        List<Arbitre> liste =  requete.getResultList();
+        return liste;
+    }
+
+    @Override
+    public Arbitre rechercheArbitreId(long id) {
+         Query requete = em.createQuery("SELECT j from Arbitre as j where j.id=:i");
+        requete.setParameter("i", id);
+          
+        List<Arbitre> liste =  requete.getResultList();
+        if (!liste.isEmpty())
+            return liste.get(0);
+        else return null;
+    }
+    
+    
+
+
     
     
     

@@ -5,13 +5,16 @@
  */
 package Facade;
 
+import Entites.Arbitre;
 import Entites.Faute;
 import Entites.FauteComise;
 import Entites.Joueur;
 import Entites.Match;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -39,6 +42,14 @@ public class FauteComiseFacade extends AbstractFacade<FauteComise> implements Fa
         FC.setJoueur(joueur);
         FC.setMatch(match);
         em.persist(FC);
+    }
+
+    @Override
+    public List<FauteComise> recupFautesMatch(Match m) {
+        Query requete = em.createQuery("SELECT f from FauteComise as f where f.match=:mat");
+        requete.setParameter("mat", m);      
+        List<FauteComise> liste =  requete.getResultList();
+        return liste;
     }
     
     

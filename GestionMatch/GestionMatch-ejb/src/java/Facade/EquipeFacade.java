@@ -9,6 +9,7 @@ import Entites.Entraineur;
 import Entites.Equipe;
 import Entites.HistoriqueEEquipe;
 import Entites.HistoriqueJEquipe;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -35,24 +36,32 @@ public class EquipeFacade extends AbstractFacade<Equipe> implements EquipeFacade
     }
 
     @Override
-    public void creerEquipe(String nomE, List<HistoriqueJEquipe> histoJE, int points, List<HistoriqueEEquipe> histoEE ) {
+    public void creerEquipe(String nomE,int points) {
         Equipe e = new Equipe();
         e.setNomE(nomE);
         e.setPoints(points);
-        e.setHistoriqueJE(histoJE);
-        e.setHistoriqueEEquipes(histoEE);
+        e.setHistoriqueJE(new ArrayList<HistoriqueJEquipe>());
+        e.setHistoriqueEEquipes(new ArrayList<HistoriqueEEquipe>());
         em.persist(e);
     }
 
     @Override
     public Equipe rechercheEquipe(String n) {
-       Query requete = em.createQuery("SELECT j from Equipe as j where j.nomE=:n");
+       Query requete = em.createQuery("SELECT j from Equipe as j where j.nomE=:nom");
         requete.setParameter("nom", n);      
         List<Equipe> liste =  requete.getResultList();
         if (!liste.isEmpty())
             return liste.get(0);
         else return null; 
     }
+
+    @Override
+    public List<Equipe> recupEquipes() {
+        Query requete = em.createQuery("SELECT j from Equipe as j");   
+        List<Equipe> liste =  requete.getResultList();
+        return liste;
+    }
+    
     
     
     

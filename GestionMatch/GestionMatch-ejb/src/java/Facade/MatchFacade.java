@@ -6,9 +6,11 @@
 package Facade;
 
 import Entites.Arbitre;
+import Entites.Equipe;
 import Entites.FauteComise;
 import Entites.Joueur;
 import Entites.Match;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -36,15 +38,15 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
     }
 
     @Override
-    public void creerMatch(Date date, int butE1, int butE2, Arbitre a, List<FauteComise> liste, List<Joueur> compoE1, List<Joueur> compoE2 ) {
+    public void creerMatch(Date date, int butE1, int butE2, Arbitre a) {
         Match m = new Match();
         m.setDate(date);
         m.setArbitre(a);
         m.setButsEquipe(butE2);
         m.setButsEquipe2(butE2);
-        m.setFauteComises(liste);
-        m.setCompoE1(compoE1);
-        m.setCompoE2(compoE2);
+        m.setFauteComises(new ArrayList<FauteComise>());
+        m.setCompoE1( new ArrayList<Joueur>());
+        m.setCompoE2(new ArrayList<Joueur>());
         em.persist(m);
     }
 
@@ -52,6 +54,26 @@ public class MatchFacade extends AbstractFacade<Match> implements MatchFacadeLoc
     public void modifierMatch(Date date, String eq1, String eq2) {
       Match m = new Match();  
     }
+
+    @Override
+    public List<Match> recupMatchsArbitre(Arbitre a) {
+        Query requete = em.createQuery("SELECT m from Match as m where m.arbitre=:arb");
+        requete.setParameter("arb", a);     
+        List<Match> liste =  requete.getResultList();
+        return liste;
+      
+    }
+
+    @Override
+    public List<Match> recupMatchsEquipe(Equipe e) {
+        Query requete = em.createQuery("SELECT m from Match as m where m.equipe1=:eq union SELECT m from Match as m where m.equipe2=:eq");
+        requete.setParameter("eq", e);     
+        List<Match> liste =  requete.getResultList();
+        return  liste;
+    }
+    
+    
+    
     
     
 }

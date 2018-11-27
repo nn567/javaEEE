@@ -6,6 +6,7 @@
 package Facade;
 
 import Entites.Arbitre;
+import Entites.Equipe;
 import Entites.FauteComise;
 import Entites.Joueur;
 import Entites.Match;
@@ -34,8 +35,12 @@ public interface MatchFacadeLocal {
 
     int count();
 
-    void creerMatch(Date date, int butE1, int butE2, Arbitre a, List<FauteComise> liste, List<Joueur> compoE1, List<Joueur> compoE2 );
+    void creerMatch(Date date, int butE1, int butE2, Arbitre a );
 
     void modifierMatch(Date date, String eq1, String eq2);
+
+    List<Match> recupMatchsArbitre(Arbitre a);
+
+    List<Match> recupMatchsEquipe(Equipe e);
     
 }

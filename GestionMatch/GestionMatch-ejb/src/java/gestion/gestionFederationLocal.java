@@ -5,6 +5,11 @@
  */
 package gestion;
 
+import Entites.Arbitre;
+import Entites.Equipe;
+import Entites.FauteComise;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -19,6 +24,16 @@ public interface gestionFederationLocal {
     void creerArbitre(String n, String p, String l, String m);
 
     void affecterEE(String n, String p, String nomE);
+
+    void creerMatch(String eq1, String eq2, long id, String date);
+
+    void interdiction(String n, String p, String date);
+
+    List<FauteComise> afficherFautesArbitre(String n, String p);
+
+    List<Equipe> recupEquipes();
+
+    List<Arbitre> recupArbitres();
 
 
     

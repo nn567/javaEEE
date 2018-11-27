@@ -24,6 +24,52 @@ import javax.persistence.Temporal;
 @Entity
 public class Match implements Serializable {
 
+    @ManyToOne
+    private Equipe equipe2;
+
+    /**
+     * Get the value of equipe2
+     *
+     * @return the value of equipe2
+     */
+    public Equipe getEquipe2() {
+        return equipe2;
+    }
+
+    /**
+     * Set the value of equipe2
+     *
+     * @param equipe2 new value of equipe2
+     */
+    public void setEquipe2(Equipe equipe2) {
+        this.equipe2 = equipe2;
+    }
+
+    
+    
+    @ManyToOne
+    private Equipe equipe1;
+
+    /**
+     * Get the value of equipe1
+     *
+     * @return the value of equipe1
+     */
+    public Equipe getEquipe1() {
+        return equipe1;
+    }
+
+    /**
+     * Set the value of equipe1
+     *
+     * @param equipe1 new value of equipe1
+     */
+    public void setEquipe1(Equipe equipe1) {
+        this.equipe1 = equipe1;
+    }
+
+    
+    
     @ManyToMany
     private List<Joueur> compoE2;
 
