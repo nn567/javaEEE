@@ -53,6 +53,7 @@ public class Joueur extends Personne implements Serializable {
      *
      * @return the value of dateInterdiction
      */
+    
     public Date getDateInterdiction() {
         return dateInterdiction;
     }

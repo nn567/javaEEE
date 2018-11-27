@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -22,6 +23,49 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Match implements Serializable {
+
+    @ManyToMany
+    private List<Joueur> compoE2;
+
+    /**
+     * Get the value of compoE2
+     *
+     * @return the value of compoE2
+     */
+    public List<Joueur> getCompoE2() {
+        return compoE2;
+    }
+
+    /**
+     * Set the value of compoE2
+     *
+     * @param compoE2 new value of compoE2
+     */
+    public void setCompoE2(List<Joueur> compoE2) {
+        this.compoE2 = compoE2;
+    }
+
+    
+    @ManyToMany
+    private List<Joueur> compoE1;
+
+    /**
+     * Get the value of compoE1
+     *
+     * @return the value of compoE1
+     */
+    public List<Joueur> getCompoE1() {
+        return compoE1;
+    }
+
+    /**
+     * Set the value of compoE1
+     *
+     * @param compoE1 new value of compoE1
+     */
+    public void setCompoE1(List<Joueur> compoE1) {
+        this.compoE1 = compoE1;
+    }
 
     @ManyToOne
     private Arbitre arbitre;

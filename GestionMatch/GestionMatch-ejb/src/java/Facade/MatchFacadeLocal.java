@@ -7,6 +7,7 @@ package Facade;
 
 import Entites.Arbitre;
 import Entites.FauteComise;
+import Entites.Joueur;
 import Entites.Match;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +34,7 @@ public interface MatchFacadeLocal {
 
     int count();
 
-    void creerMatch(Date date, int butE1, int butE2, Arbitre a, List<FauteComise> liste);
+    void creerMatch(Date date, int butE1, int butE2, Arbitre a, List<FauteComise> liste, List<Joueur> compoE1, List<Joueur> compoE2 );
 
     void modifierMatch(Date date, String eq1, String eq2);
     
